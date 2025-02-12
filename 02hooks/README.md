@@ -95,4 +95,9 @@ Conclusion: Why Use Hooks?
 ✔ Hooks make functional components more powerful and maintainable
 
 
+*************************************
+
+Note : At a same time we can easialy handle multipla use of state at the same time . like in this project ( in buttons counts & in the paragraph  and many more places)
+
+
 
