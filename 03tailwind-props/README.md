@@ -67,3 +67,64 @@ export default function App() {
 }
 
 here reusebility of Card and control the data on display by using the props in reactjs.
+
+
+
++++++++++++++++++++++++++ MOst Imp React Interview Question +++++++++++++++++++++++++++++
+
+Question - Create a react page where will be two button for increament and decreament , When clicked on first -> increase and clicked on second -> decrease the values. After that, what if , in the condition you will repeate the condition 4 time .
+
+exp- 
+
+let [counter, setCounter] = useState(0)
+
+  const addValue =() => {
+
+    //repeated condition 
+
+     setCounter(counter + 1)
+     setCounter(counter + 1)
+     setCounter(counter + 1)
+     setCounter(counter + 1)
+
+    }
+
+    const removeValue =() => {
+      setCounter(counter - 1)
+     }
+
+  return (
+    <>
+      <h1>start to learn vite</h1>
+      <h2>count value is {counter}</h2>
+      <button onClick={addValue}>Add Value { counter}</button><br /><hr />
+      <button onClick={removeValue}>Remove Value { counter}</button>
+    </>
+  )
+
+  Note -
+  1. Here, each setCounter(counter + 1) is based on the same stale value of counter before updates occur.
+  2. React does not immediately update counter after each line; instead, it schedules an update.
+  3. Since all four updates use the same counter value, only the last update takes effect.
+
+
+  result - when you click then increase by 1 not 4 .
+
+  but :-
+
+  // condition -
+
+  setCounter(prevCounter => prevCounter + 1) //prevCounter is not any keyword or special meaning you can take another name accordingly.
+  setCounter(prevCounter => prevCounter + 1)
+  setCounter(prevCounter => prevCounter + 1)
+  setCounter(prevCounter => prevCounter + 1)
+
+Note -
+  1. Here, each setCounter function receives the previous state value (prevCounter), which ensures that every update is based on the latest state.
+  2. React batches these updates, but since each one correctly references the previous state, the counter updates sequentially (0 → 1 → 2 → 3 → 4).
+  3. This ensures that counter increases by 4 instead of just 1
+
+
+  result - here you will get the increament of 4. 
+
+
