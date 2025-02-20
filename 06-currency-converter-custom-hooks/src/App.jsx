@@ -2,9 +2,7 @@
 function App() {
   return (
     <>
-      srdfguipgfzgoip;t7r6etdfghjo'/jhg,fdnsbzxcgilu;ok/
-      <h1>srdfguipgfzgoip;t7r6etdfghjo'/jhg,fdnsbzxcgilu;ok/</h1>
-      <p5>srdfguipgfzgoip;t7r6etdfghjo'/jhg,fdnsbzxcgilu;ok/</p5>
+      <h1>Currency Converter App</h1>
     </>
   )
 }
