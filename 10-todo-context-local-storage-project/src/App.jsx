@@ -45,65 +45,100 @@ function App() {
 
   return (
     <TodoProvider value={{todos, addTodo, updateTodo, deleteTodo, toggleComplete}}>
-      <div className="bg-black min-h-screen py-12 text-white font-sans">
-        <div className="w-full max-w-2xl mx-auto">
-          {/* Main container with subtle border */}
-          <div className="rounded-lg overflow-hidden shadow-2xl bg-black border border-gray-800">
-            {/* Header with pure black/white contrast */}
-            <div className="bg-gray-700 px-6 py-5 text-black">
-              <h1 className="text-3xl font-bold text-center mb-1 text-white">
-                Manage Your Tasks
-              </h1>
-              <p className="text-center text-white text-sm">
-                Stay organized and focused
+      <div className="bg-gray-950 min-h-screen py-12 text-white font-sans">
+        <div className="w-full max-w-3xl mx-auto px-4">
+          
+          {/* Main container with professional styling */}
+          <div className="rounded-xl overflow-hidden border border-gray-800 bg-gradient-to-b from-gray-900 to-gray-950 shadow-2xl">
+            {/* Header with industrial accent bar */}
+            <div className="relative bg-gray-800 px-8 py-6">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600"></div>
+              <h2 className="text-2xl font-semibold text-white">
+                Task Management
+              </h2>
+              <p className="text-gray-400 text-sm mt-1">
+                Prioritize and track your workflow efficiently
               </p>
             </div>
             
             <div className="p-6 bg-gray-900">
-              {/* Form with border */}
-              <div className="mb-6 bg-black rounded-lg p-4 border border-gray-800">
+              {/* Form with professional styling */}
+              <div className="mb-8 bg-gray-800 rounded-lg p-5 border border-gray-700 shadow-lg">
+                <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-3">New Task</h3>
                 <TodoForm />
               </div>
               
-              {/* Empty state with minimalist design */}
+              {/* Empty state with professional design */}
               {todos.length === 0 ? (
-                <div className="text-center py-10 text-gray-400">
-                  <div className="inline-block w-12 h-1 bg-white mb-4"></div>
-                  <p className="text-lg font-medium">No todos yet</p>
-                  <p className="text-sm text-gray-600">Add your first task to get started</p>
+                <div className="text-center py-12 bg-gray-850 rounded-lg border border-gray-800">
+                  <svg className="w-12 h-12 mx-auto mb-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                  </svg>
+                  <p className="text-lg font-medium text-gray-300">No tasks created</p>
+                  <p className="text-sm text-gray-500 mt-1">Add your first task to get started</p>
                 </div>
               ) : (
-                <div className="space-y-3">
-                  {/* Todo items without hover effects */}
-                  {todos.map((todo) => (
-                    <div 
-                      key={todo.id}
-                      className="w-full"
-                    >
-                      <div className="border border-gray-800 rounded-lg overflow-hidden">
-                        <TodoItem todo={todo} />
+                <div>
+                  {/* Task section header */}
+                  <div className="flex justify-between items-center mb-4 px-2">
+                    <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wider">Your Tasks</h3>
+                    <span className="text-xs text-gray-500">{todos.length} item{todos.length !== 1 ? 's' : ''}</span>
+                  </div>
+                  
+                  {/* Task list with industrial styling */}
+                  <div className="space-y-3">
+                    {todos.map((todo) => (
+                      <div key={todo.id} className="w-full">
+                        <div className="border border-gray-700 rounded-lg overflow-hidden bg-gray-800 shadow-md">
+                          <TodoItem todo={todo} />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               )}
               
-              {/* Stats footer with "selected" instead of "completed" */}
+              {/* Stats footer with industrial styling */}
               {todos.length > 0 && (
-                <div className="mt-8 pt-4 border-t border-gray-800 flex justify-between items-center">
-                  <div className="flex items-center space-x-2">
-                    <span className="px-2 py-1 bg-black border border-gray-800 rounded-lg text-xs">
-                      Total: {todos.length}
-                    </span>
-                    <span className="px-2 py-1 bg-white text-black rounded-lg text-xs">
-                      Selected: {todos.filter(todo => todo.completed).length}
-                    </span>
+                <div className="mt-8 pt-5 border-t border-gray-700">
+                  <div className="flex flex-col sm:flex-row justify-between">
+                    <div className="flex items-center space-x-4 mb-4 sm:mb-0">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 rounded-sm bg-blue-500 mr-2"></div>
+                        <span className="text-xs text-gray-400">
+                          Total: <span className="text-white font-medium">{todos.length}</span>
+                        </span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 rounded-sm bg-green-500 mr-2"></div>
+                        <span className="text-xs text-gray-400">
+                          Selected: <span className="text-white font-medium">{todos.filter(todo => todo.completed).length}</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-full bg-gray-700 rounded-full h-2 mr-2 max-w-24">
+                        <div 
+                          className="bg-blue-500 h-2 rounded-full" 
+                          style={{width: `${Math.round((todos.filter(todo => todo.completed).length / todos.length) * 100)}%`}}
+                        ></div>
+                      </div>
+                      <span className="text-xs text-gray-400">
+                        {Math.round((todos.filter(todo => todo.completed).length / todos.length) * 100)}%
+                      </span>
+                    </div>
                   </div>
-                  <span className="text-xs text-gray-600">
-                    {Math.round((todos.filter(todo => todo.completed).length / todos.length) * 100)}% done
-                  </span>
                 </div>
               )}
+            </div>
+          </div>
+          
+          {/* Professional footer */}
+          <div className="mt-6 text-center">
+            <div className="text-xs text-gray-600 flex items-center justify-center">
+              <span className="mr-2">All Right Reserved</span>
+              <span className="h-1 w-1 bg-gray-700 rounded-full mx-1"></span>
+              <span>@2025</span>
             </div>
           </div>
         </div>
